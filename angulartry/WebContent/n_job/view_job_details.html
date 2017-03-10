@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+
+.input
+{
+ 	   background: transparent;
+    color: orange;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+	border-bottom:1px solid orange;
+}
+
+.jobbox
+{
+height:250px;
+width:450px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:250px;
+width:450px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:left;
+font-size:18px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+word-wrap: break-word;
+}
+.main
+{
+margin-left:425px;
+}
+
+</style>
+
+
+</head>
+<body>
+<div  ng-controller="JobController as ctrl">
+
+
+
+<div class="jobbox">
+	<div class="boxheader">{{selectedJob.title}}</div>
+	<div class="boxbody">
+		<div id="container">
+			<div class="container-first"></div>
+			<div class="container-second">
+				<div id="content-container">
+				<pre>	
+ID            : {{selectedJob.id}}
+TITLE         : {{selectedJob.title}}
+DATE          : {{selectedJob.dateTime}}
+QUALIFICATION : {{selectedJob.qualification}}
+DESCRIPTION   : {{selectedJob.description}}
+
+	<button type="button" ng-click="ctrl.applyForJob(selectedJob.id)" class="button">Apply For Job</button>
+<!-- {{selectedJob}} -->
+					</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+

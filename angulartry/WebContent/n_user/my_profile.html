@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style>
+	
+.loginbox
+{
+height:600px;
+width:900px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:75px;
+text-align: center;	
+line-height: 75px; 
+color:orange;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+display-inline:block;
+}
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+div#container
+{
+height:100%;
+width:900px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+
+}
+
+.input
+{
+ 	width:300px;
+   background: transparent;
+    color: #FDFCFD;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	border-bottom:1px solid white;
+}
+
+.r
+{
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.item
+{
+height:100%;
+width:410px;
+background-color:transparent;
+float:left;
+margin-left:5px;
+}
+
+</style>
+
+
+
+</head>
+<body>
+
+<div class="container" ng-controller="UserController as ctrl">
+
+
+	
+<div class="loginbox">
+	     <div class="boxheader">
+				 <h1 >Its my profile</h1>
+			
+		 </div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+						<div id="content-container">
+							
+							
+									<div class="item" style="text-align:left;font-size:20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+ <pre style="padding-top:0px;">
+ 	  <button type="button" ng-click="ctrl.usermyprofile()"   class="button">View Profile</button>
+										
+	NAME	: <label>{{ctrl.user.name}}</label><br>
+	EMAIL	: <label>{{ctrl.user.email}}</label><br>
+	PASSWORD: <label>{{ctrl.user.password}}</label><br>
+	D_O_B	: <label>{{ctrl.user.dob}}</label><br>
+	MOBILE  : <label>{{ctrl.user.mob_no}}</label><br>
+	ADDRESS	: <label>{{ctrl.user.address}}</label><br>
+	GENDER	: <label>{{ctrl.user.gender}}</label><br>
+	
+</pre>
+									</div>
+									<div class="item" style="width:5px;height:525px;background-color:black;"></div>
+									<div class="item"><br>
+										<button type="button" ng-click="getform = !getform" class="button">Edit Profile</button>
+										
+										<form ng-submit="ctrl.userupdate(user)" name="myForm" class="form-horizontal" ng-show="getform">
+											<br>
+																				
+											
+											<input type="text" ng-model="ctrl.user.name" id="name" class="input" placeholder="Enter your Name" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.email" id="email" class="input" placeholder="Enter your Email" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.password" id="password" class="input" placeholder="Enter your password" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.mob_no" id="mob_no" class="input" placeholder="Enter your contact number" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.dob" id="dob" class="input" placeholder="Enter your date of birth" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.gender" id="gender" class="input" placeholder="Male or Female" required />
+											<br><br>
+											<input type="text" ng-model="ctrl.user.address" id="address" class="input" placeholder="Enter Address" required />
+											<br><br>
+											<input type="submit" value="Update Ur Profile" class="button">
+											
+											
+										</form>
+																				
+									
+									</div>
+							 
+						</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+	
+	<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style>
+	
+.loginbox
+{
+height:600px;
+width:600px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:orange;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:75px;
+text-align: center;	
+line-height: 75px; 
+color:white;
+
+}
+.boxitem
+{
+background-color:#1E1713;
+border-radius: 15px;
+height:75px;
+width:80%;
+text-align: center;	
+color:white;
+line-height: 30px; 
+margin:0 auto;
+}
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+display-inline:block;
+}
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+div#container
+{
+height:100%;
+width:600px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+
+}
+
+.input
+{
+ 	width:300px;
+   background: transparent;
+    color: #FDFCFD;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	border-bottom:1px solid white;
+}
+
+.r
+{
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+</style>
+
+
+
+</head>
+<body>
+
+<div class="container" ng-controller="UserController as ctrl">
+
+<button type="button" ng-click="ctrl.usermyprofile()"   class="btn btn-warning btn-sm">View Profile</button>
+ &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+<button type="button" ng-click="getform = !getform" class="btn btn-warning btn-sm">Edit Profile</button>
+<div class="form-group">
+<br>
+
+NAME:<label>{{ctrl.user.name}}</label><br>
+EMAIL:<label>{{ctrl.user.email}}</label><br>
+PASSWORD:<label>{{ctrl.user.password}}</label><br>
+DATE OF BIRTH:<label>{{ctrl.user.dob}}</label><br>
+MOBILE NO:<label>{{ctrl.user.mob_no}}</label><br>
+ADDRESS:<label>{{ctrl.user.address}}</label><br>
+GENDER:<label>{{ctrl.user.gender}}</label><br>
+
+<!-- NAME:<label>{{currentUser.name}}</label><br>
+EMAIL:<label>{{currentUser.email}}</label><br>
+PASSWORD:<label>{{currentUser.password}}</label><br>
+DATE OF BIRTH:<label>{{currentUser.dob}}</label><br>
+MOBILE NO:<label>{{currentUser.mob_no}}</label><br>
+ADDRESS:<label>{{currentUser.address}}</label><br>
+GENDER:<label>{{currentUser.gender}}</label><br> -->
+                 
+</div>
+
+<!-- 
+<div class="formcontainer">
+<form ng-submit="ctrl.userupdate(user)" name="myForm" class="form-horizontal" ng-show="getform">
+<br>
+<label>Edit your profile...</label>
+
+<br>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="name">Name</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.name" id="name" class="username form-control input-sm" placeholder="Enter your Name" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="mail">Email</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="password">Password</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.password" id="password" class="username form-control input-sm" placeholder="Enter your password" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="mob_no">Mobile No:</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.mob_no" id="mob_no" class="mob_no form-control input-sm" placeholder="Enter your contact number" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="password">Date of Birth</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.dob" id="dob" class="username form-control input-sm" placeholder="Enter your date of birth" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="password">Gender</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.gender" id="gender" class="username form-control input-sm" placeholder="Male or Female" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group col-md-12">
+<label class="col-md-2 control-lable"for="address">Address</label>
+<div class="col-md-7">
+<input type="text" ng-model="ctrl.user.address" id="address" class="username form-control input-sm" placeholder="Enter Address" required />
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-actions floatRight">
+<input type="submit" value="Update Ur Profile" class="btn btn-primary btn-sm">
+
+</div>
+</div>
+</form>
+</div></div>
+
+</body>
+</html>
+	 -->

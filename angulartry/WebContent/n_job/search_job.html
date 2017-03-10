@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+
+.input
+{
+ 	   background: transparent;
+    color: orange;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+	border-bottom:1px solid orange;
+}
+
+.jobbox
+{
+height:200px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:200px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:left;
+font-size:20px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+.main
+{
+margin-left:400px;
+background-color:black;
+margin-top: 0;
+border-radius: 25px 0 25px 0;
+height:50px;
+width:500px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+
+}
+
+</style>
+
+</head>
+<body>
+	<div  ng-controller="JobController as ctrl">
+		<p>
+		<p>
+		<p>
+		<p>
+		<p>
+		<p>
+		<div class="main" >
+		
+		 <input type="text" ng-model="sear_text" class="input" size="10" placeholder="Search for job">
+		
+		
+		</div>
+
+				<br><br>
+		<div ng-repeat="job in ctrl.jobs | filter:sear_text">
+
+				<div class="jobbox">
+									<div class="boxheader">{{job.title}}</div>
+									<div class="boxbody">
+										<div id="container">
+											<div class="container-first"></div>
+											<div class="container-second">
+												<div id="content-container">
+			<p>ID:{{job.id}}</p>
+				<p>Title:{{job.title}}</p>
+				<p>Qualification:{{job.qualification}}</p>
+				
+				<p>
+					<button type="button" ng-click="ctrl.getJobDetails(job.id)" class="button">Details</button> &nbsp;&nbsp;&nbsp;
+					<button type="button" ng-click="ctrl.applyForJob(job.id)" class="button">Apply</button>
+				</p>
+					</div></div></div></div></div>			
+			<br><br><br>
+			
+		</div>
+	</div>
+</body>
+</html>

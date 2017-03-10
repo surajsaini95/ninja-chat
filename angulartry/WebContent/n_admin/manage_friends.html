@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style>
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.jobbox
+{
+height:200px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:200px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:left;
+}
+.main
+{
+margin-left:400px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="main" ng-controller="FriendController as ctrl">
+
+
+ <div class="row">
+   <div class="table-response">
+   <table class="table">
+					<thead>
+						<tr>
+							<th></th>							
+						</tr>
+					</thead>
+					<tbody>
+					
+							<tr ng-repeat="friend in ctrl.friends" class="success" ng-hide="user.id==currentUser.id">
+			<td><div class="jobbox">
+	     <div class="boxheader">
+			You got a friend request
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+<pre>
+		Id       : {{friend.id}}
+		FriendId : {{friend.friendID}}
+		Isonline : {{friend.IsOnline}}
+		Status   : {{friend.status}}
+		UserId   : {{friend.userID}}		
+		
+	   <button ng-hide="friend.status=='A' || friend.status=='R'" type="button" ng-click="ctrl.friendaccept(friendapplied)" class="button">ACCEPT</button>   <button ng-hide="friend.status=='A' || friend.status=='R'" type="button" ng-click="ctrl.friendreject(friendapplied)" class="button">REJECT</button>
+							
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<br><br><br><br>							
+</td>
+</tr>
+</tbody>
+</table>
+   </div>
+ </div>
+
+
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
+<!-- 
+<body>
+
+<div class="container" ng-controller="FriendController as ctrl">
+
+
+ <div class="row">
+   <div class="table-response">
+   <table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>FriendID</th>
+							<th>IsOnLine</th>
+							<th>Status</th>
+							<th>UserID</th>							
+						</tr>
+					</thead>
+					<tbody>
+					
+							<tr ng-repeat="friend in ctrl.friends" class="success" ng-hide="user.id==currentUser.id">
+								<td>{{friend.id}}</td>
+								<td>{{friend.friendID}}</td>
+								<td>{{friend.IsOnline}}</td>
+								<td>{{friend.status}}</td>
+								<td>{{friend.userID}}</td>															
+													
+				<td><button ng-hide="friend.status=='A' || friend.status=='R'" type="button" ng-click="ctrl.friendaccept(friendapplied)" class="btn btn-warning btn-sm">ACCEPT</button></td>
+				
+                <td><button ng-hide="friend.status=='A' || friend.status=='R'" type="button" ng-click="ctrl.friendreject(friendapplied)" class="btn btn-danger">REJECT</button></td>
+					</tr>
+</tbody>
+</table>
+   </div>
+ </div>
+
+
+</div>
+
+
+
+</body> -->

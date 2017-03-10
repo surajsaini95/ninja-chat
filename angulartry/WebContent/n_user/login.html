@@ -1,0 +1,188 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+
+<style>
+	
+.loginbox
+{
+height:400px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:75px;
+text-align: center;	
+line-height: 75px; 
+color:orange;
+
+}
+.boxitem
+{
+background-color:#1E1713;
+border-radius: 15px;
+height:75px;
+width:80%;
+text-align: center;	
+color:white;
+line-height: 30px; 
+margin:0 auto;
+}
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+
+div#container
+{
+height:400px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:center;
+}
+
+.input
+{
+ 
+   background: transparent;
+    color: #FDFCFD;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+}
+</style>
+</head>
+<body>
+<div ng-controller="UserController as ctrl">
+<!-- 
+<div ng-show='ctrl.user.errorMessage'>
+<div class="alert alert-danger fade in">Error :
+        {{ctrl.user.errorMessage}}</div>
+   </div>     
+    -->
+  <div ng-hide="ctrl.userLoggedIn">
+  
+  	<div class="loginbox">
+	     <div class="boxheader">
+			<h1>Log In</h1>
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+						
+						  <br>
+									<form name="form" ng-submit="ctrl.login()" role="form">
+									  
+									  	  <input type="text" name="username" id="name" class="input" placeholder="Username" ng-model="ctrl.user.name" required/>
+									<hr width=75%>
+									  <br>
+									 	  <input type="password" name="password" id="password" class="input" placeholder="Password" ng-model="ctrl.user.password" required/>
+								     <hr width=75%>
+									  <br>
+									  <div class="row">
+										<div class="form-actions floatRight">
+											<input type="submit" value="Let Me In" class="button">
+										</div>
+									 </div>
+									  
+								  </form>	
+						  <br>
+						  <h3>Not a member yet ? <a href="#/register"><h3>Register NOW </h3></a></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+  
+  
+  
+  
+		  <!-- 
+		  <div class="loginbox">
+		  		<div class="boxheader"></div>
+		    <form name="form" ng-submit="ctrl.login()" role="form">
+			  
+			  <div class="form-group" ng-class="{'has-error': form.username.$dirty && form.username.$error.required }">
+				  <label for="username">UserName</label> <br>
+				  <input type="text" name="username" id="name" class="form-control" ng-model="ctrl.user.name"  autofocus required/>
+				  <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">User-name is required</span>
+			  </div>
+			  <br>
+			  <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.password.$error.required }">
+				  <label for="password">Password</label><br>
+				  <input type="password" name="password" id="password" class="form-control" ng-model="ctrl.user.password" required/>
+				  <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required..</span>
+			  </div>
+			  <br>
+			  <div class="row">
+				<div class="form-actions floatRight">
+					<input type="submit" value="Log-In" class="btn btn-primary btn-sm">
+				</div>
+			 </div>
+			  
+		  </form>
+		  </div>	 -->
+  </div>
+  </div>
+</body>
+</html>

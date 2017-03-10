@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+    text-decoration:none;
+    
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.jobbox
+{
+height:350px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:350px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:justify;
+font-size:20px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+padding-left:10px;
+padding-right:10px;
+
+}
+
+
+.input
+{
+ 	   background: transparent;
+    color: #FDFCFD;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+	border-bottom:1px solid orange;
+}
+
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.desc
+{
+overflow:hidden;
+}
+
+
+
+.commentbox
+{
+height:100px;
+width:400px;
+border-radius:15px;
+margin:0 auto;
+background-color:black;
+text-align:justify;
+font-size:20px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+color:orange;
+}
+
+.cbox
+{
+background-color:transparent;
+color: white;
+}
+
+</style>
+
+
+</head>
+<body>
+<div class="jobbox" ng-controller="BlogController as ctrl">
+	     <div class="boxheader">
+			{{selectedBlog.title}}
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+							
+						   
+
+								<div class="form-group">
+									<br>
+									{{selectedBlog.userID}} says that,<br><br>
+									{{selectedBlog.description}}<br>
+									<br>
+									<div class="cbox">
+									
+									<form ng-submit="ctrl.addcomment(selectedBlog.id,ctrl.blogcomment.bcomment,ctrl.blogcomment.rating)">
+									
+									<input type="text" ng-model="ctrl.blogcomment.bcomment" id="id" class="input" placeholder="What do you feel..."/><br>
+									
+									
+									<br>
+									
+									<span class="starRating" ng-hide="currentUser.id==selectedBlog.userID">Rate it<br>
+									<input id="rating5" type="radio" name="ratingss" ng-model="ctrl.blogcomment.rating" value="5"> 
+									 <label for="rating5">5</label>  &nbsp; &nbsp; &nbsp;
+									 
+									 <input id="rating4" type="radio" name="ratingss" ng-model="ctrl.blogcomment.rating" value="4">
+									 <label for="rating4">4</label>  &nbsp; &nbsp; &nbsp;
+									 
+									 <input id="rating3" type="radio" name="ratingss" ng-model="ctrl.blogcomment.rating" value="3">
+									 <label for="rating3">3</label>  &nbsp; &nbsp; &nbsp;
+									 
+									 <input id="rating2" type="radio" name="ratingss" ng-model="ctrl.blogcomment.rating" value="2">
+									 <label for="rating2">2</label>  &nbsp; &nbsp; &nbsp;
+									 
+									 <input id="rating1" type="radio" name="ratingss" ng-model="ctrl.blogcomment.rating" value="1">
+									 <label for="rating1">1</label>  &nbsp; &nbsp; &nbsp;
+									</span> 
+									
+									<button type="submit"  class="button">Comment it</button>
+									<br></form>
+									<br><br><br><br>
+									
+									<div class="form-group">
+									<button type="submit"  ng-click="ctrl.getSelectedBlogComment(selectedBlog.id)" class="button">View Comments</button><br>
+										<br>
+									 <div ng-repeat="selectedBlogComment in ctrl.blogcomments">
+									
+									
+									<div class="commentbox">
+										     <div class="commentboxheader">
+												
+												Comment By : <label> {{selectedBlogComment.userID}} </label><br> 
+												Comment    : <label> {{selectedBlogComment.blogcomment}} </label><br>
+												Rating     : <label> {{selectedBlogComment.rating}}</label><br>
+																
+											</div>
+									</div>
+									<br>								
+									</div>
+									<!-- {{ctrl.blogcomments}} -->
+									</div></div>
+									
+							</div>
+							
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	        
+</body>
+</html>
+
+

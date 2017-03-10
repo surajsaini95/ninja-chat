@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+
+.input
+{
+ 	   background: transparent;
+    color: orange;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+	border-bottom:1px solid orange;
+}
+
+.jobbox
+{
+height:300px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:300px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:left;
+font-size:18px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+.main
+{
+margin-left:400px;
+background-color:black;
+margin-top: 0;
+border-radius: 25px 0 25px 0;
+height:50px;
+width:500px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+
+}
+
+</style>
+
+</head>
+<body>
+	<div  ng-controller="FriendController as ctrl">
+		<p>
+		<p>
+		<p>
+		<p>
+		<p>
+		<p>
+		<div class="main" >
+		
+		 <input type="text" ng-model="sear_text" class="input" size="10" placeholder="Search friend">
+		
+		
+		</div>
+
+				<br><br>
+		<div ng-repeat="user in ctrl.users | filter: sear_text" ng-hide="user.id==currentUser.id">
+
+				<div class="jobbox">
+									<div class="boxheader" > 
+									
+									{{user.name}}
+									
+									</div>
+									<div class="boxbody">
+										<div id="container">
+											<div class="container-first"></div>
+											<div class="container-second">
+												<div id="content-container" >
+			<pre> 
+IsOnline : {{user.isOnline}}
+ID       : {{user.id}} 
+Name     : {{user.name}}
+Email    : {{user.email}}
+Mobile   : {{user.mob_no}}
+Gender   : {{user.gender}}
+Role     : {{user.role}}
+
+    <button type="button" ng-click="ctrl.sendFriendRequest(user.id)" class="button" >Send Friend Request</button>
+	<!-- <a href="#/chat" class="button" ng-show="f.status=='A' && f.friendID==user.id && f.userID==currentUser.id">Send Message</a>
+	 -->   
+    </pre>
+					</div></div></div></div></div>			
+			<br><br><br><br>
+			
+		</div>
+		
+		{{ctrl.allFriends}}
+		
+	</div>
+</body>
+</html>
+
+
+
+
+<!-- 
+<div class="container" ng-controller="FriendController as ctrl">
+
+     <p>
+     <p>
+     <p>
+     <p>
+     
+     <p>
+     <p>
+     <p>
+     <p>
+     
+     <div class="form-group has-feedback"></div>
+     
+     Search 
+
+     <input type="text" ng-model="sear_text">
+     
+     
+         <div ng-repeat="user in ctrl.users | filter: sear_text">
+         
+             <fieldset>
+                  <legend></legend>
+                  
+                  <p> Online ?: {{user.isOnline}} </p>
+                   
+                   <p>ID: {{user.id}} &nbsp; &nbsp; &nbsp; Name: {{user.name}}
+                      &nbsp; &nbsp; &nbsp;  <button type="button" ng-click="ctrl.sendFriendRequest(user.id)"
+                       class="btn btn-warning btn-sm">Send Friend Request</button>
+                    </p>
+                    
+                   <p>Email: {{user.email}} &nbsp; &nbsp; &nbsp; Mobile:{{user.mob_no}}</p>
+                   
+                   <p>Gender:{{user.gender}} &nbsp; &nbsp; &nbsp; Role:{{user.role}}</p>
+                </fieldset>
+             </div>
+          </div>
+          
+           -->           

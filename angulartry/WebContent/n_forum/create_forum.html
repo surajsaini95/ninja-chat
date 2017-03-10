@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+    text-decoration:none;
+    
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.jobbox
+{
+height:350px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:350px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:justify;
+font-size:15px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+padding-left:10px;
+padding-right:10px;
+
+}
+.main
+{
+margin-left:400px;
+}
+.not
+{
+font-size:20px;
+}
+a
+{
+text-decoration:none;
+}
+a:hover
+{
+color:orange;
+}
+
+.input
+{
+ 	   background: transparent;
+    color: #FDFCFD;
+	border:0px;
+	outline:none;
+	margin-bottom:0px;
+	font-size: 1.5rem;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+	border-bottom:1px solid orange;
+}
+
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.desp
+{
+overflow:hidden;
+}
+
+</style>
+
+
+</head>
+<body>
+<div class="jobbox">
+	     <div class="boxheader">
+			Create new forum...
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+							<div ng-controller="UserController as ctr">
+
+								<div class="not" ng-hide="currentUser.role=='admin' || currentUser.role=='alumni' || currentUser.role=='student' || currentUser=='employee'">
+									<div class="alert alert-danger fade in">
+								      You are not logged in..<br> Please <a href="#/login">login</a> to create new forum.
+								        
+								         </div>
+								         
+								         <div>
+								         <br>
+								            And if you have not registered yet , then <a href="#/register"> register </a>yourself now.
+								            </div>
+								          </div>
+						        </div>
+						        
+						         <div ng-show="currentUser.role=='admin' || currentUser.role=='alumni' || currentUser.role=='student' || currentUser=='employee'">
+								 
+							       <div class="generic-container" ng-controller="ForumController as ctrl">
+         
+									            <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+									            <br>
+									                     <input type="text" ng-model="ctrl.forum.title" id="title" class="input" size="25" placeholder="Enter forum title" required ng-minlength="1" ng-maxlength="500">
+									                   <br><br>
+									                       <input type="text" ng-model="ctrl.forum.category" id="category" class="input"  size="25" placeholder="Enter forum category" required ng-minlength="1" ng-maxlength="500">
+									                   <br><br>
+									                     <textarea rows="5" cols="30" ng-model="ctrl.forum.description" id="description"
+									                            class="desp input" placeholder="Provide forum description" 
+									                            required ng-minlength="1" ng-maxlength="500">
+									                            </textarea>
+									                          <br><br>  
+									                            
+									           <div class="row">
+									             <div class="form-actions floatRight">
+									                <input type="submit" value="Create Forum" class="button">
+									                  <button type="button" ng-click="ctrl.reset()" class="button">Reset Forum</button>
+									               </div>
+									             </div>
+									           </form>
+									          </div>   
+							          
+							        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	        
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+<div ng-show="currentUser==''">
+<div class="alert alert-danger fade in">
+      You are not logged in.. Please login<a href="#/login">here</a>
+          Create a Forum
+         </div>
+         
+         <div>
+            If you are not at register , you can register <a href="#/register">here</a>
+            </div>
+          </div>
+        </div> 
+        
+     <div ng-hide="currentUser==''">
+      
+        <div class="generic-container" ng-controller="ForumController as ctrl">
+         
+            <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+            
+              <label>Please fill the Forum details...</label>
+              
+              
+               <div class="row"> 
+                 <div class="form-group col-md-12"> 
+                    <label class="col-md-2 control-lable" for="title">Title</label>
+                      <div class="col-md-7">
+                       <input type="text" ng-model="ctrl.forum.title" id="title" class="title form-control input-sm" placeholder="Enter forum title" required ng-minlength="1" ng-maxlength="500">
+                   </div>
+                 </div>
+             </div>
+             <div class="row"> 
+                 <div class="form-group col-md-12"> 
+                    <label class="col-md-2 control-lable" for="category">Category</label>
+                      <div class="col-md-7">
+                       <input type="text" ng-model="ctrl.forum.category" id="category" class="category form-control input-sm" placeholder="Enter forum category" required ng-minlength="1" ng-maxlength="500">
+                   </div>
+                 </div>
+             </div>
+          <div class="row">
+             <div class="form-group col-md-12">
+                 <label class="col-md-2 control-lable" for="description">Description</label>
+                   <div class="col-md-7">
+                     <textarea rows="10" cols="100" ng-model="ctrl.forum.description" id="description"
+                            class="description form-control input-sm" placeholder="forum description" 
+                            required ng-minlength="1" ng-maxlength="500">
+                            </textarea>
+                            
+                            </div>
+                            </div>
+                            </div>
+                            
+           <div class="row">
+             <div class="form-actions floatRight">
+                <input type="submit" value="Create Forum" class="btn btn-primary btn-sm">
+                  <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm">Reset Forum</button>
+               </div>
+             </div>
+           </form>
+          </div> 
+          
+          
+        </div>
+        
+</body>
+</html> -->

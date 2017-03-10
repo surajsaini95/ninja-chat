@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.button {
+	background-color: orange;
+	color: white;
+	padding: 5px;
+	text-align: center;
+	font-size: 25px;
+	margin: 4px 5px;
+	cursor: pointer;
+	border-radius: 10px;
+	border: 0px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.button:hover {
+	background-color: black;
+	color: orange;
+}
+
+.input {
+	background: transparent;
+	color: orange;
+	border: 0px;
+	outline: none;
+	margin-bottom: 0px;
+	font-size: 1.5rem;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	border-bottom: 1px solid orange;
+}
+
+.jobbox {
+	height: 100px;
+	width: 600px;
+	border-radius: 15px 0px;
+	margin: 0 auto;
+	background-color: transparent;
+}
+
+.boxheader {
+	background-color:transparent;
+	margin-top: 0;
+	border-radius: 15px 15px 0 0;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	color: orange;
+	font-size: 25px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.boxbody {
+	height: 100%;
+	width: 98%;
+	border-radius:15px;
+	text-align: center;
+}
+
+.box {
+	min-height: 50px;
+	height:auto;
+	width: 600px;
+	border-radius: 0px 15px  0px;;
+	margin: 0 auto;
+	background-color: transparent;
+}
+.m
+{
+min-height:30px;
+height:auto;
+display:inline-block;
+width:100%;
+background-color:transparent;
+}
+.t
+{
+width:100%;
+height:20px;
+display:inline-block;
+border-radius: 0px 0px 0px 15px  ;
+background-color:black;
+color:orange;
+text-align:right;
+padding:0px  5px 0px 0px;
+box-sizing:border-box;
+}
+div#container {
+	height:100%;
+	display:inline-block;
+	width: 600px;
+	position:relative;
+	background-color: transparent;
+}
+
+div#container>div.container-first {
+	height: 100%;
+	width: 100%;
+	display:block;
+	position:absolute;
+	background-color: black;
+	opacity: .5;
+	margin-top:0px;
+	z-index:0;
+	border-radius: 0px 15px  0px 0px;
+}
+
+div#container>div.container-second {
+	position:relative;
+	margin-top:0px;
+	height: 100%;
+	width: 98%;
+	left: 1%;
+	background-color: transparent;
+}
+
+div#container>div.container-second>div#content-container {
+	color: orange;
+	text-align: left;
+	font-size: 20px;
+	min-height:30px;
+	height:auto;
+	padding:5px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	word-wrap: break-word;
+	diplay:inline-block;
+}
+
+.main {
+	margin-left: 300px;
+	background-color: black;
+	margin-top: 0;
+	border-radius: 25px 0 25px 0;
+	height: 70px;
+	width: 700px;
+	text-align: center;
+	line-height: 50px;
+	color: orange;
+	font-size: 20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+</style>
+
+</head>
+
+<body ng-app="myApp">
+	<p>
+	<p>
+	<p>
+	<p>
+	<p>
+	<div ng-controller="ChatController" ng-init="init(currentUser.name)">
+
+		<p>
+		<p>
+		<p>
+		<p>
+		<p>
+		<div class="main">
+			<form ng-submit="addMessage()" name="messageForm">
+				<input type="text" class="input" placeholder="Type a message.." size="30" ng-model="message" />
+				
+					<span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+					<button ng-disabled="message.length > max || message.length === 0" class="button">Send</button>
+				
+			</form>
+		</div>
+
+		<div ng-repeat="message in messages | orderBy: 'time':true" >
+<br>
+			<div class="box">
+				<div class="m">
+				<div id="container">
+						<div class="container-first"></div>
+						<div class="container-second">
+							<div id="content-container">
+								
+								<span ng-class="{self: message.self}">{{message.message}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="t">
+					<time>{{message.time | date: 'HH:mm'}}</time>
+				</div>
+			</div>
+			
+		</div>
+		<!-- {{messages}} -->
+	</div>
+
+</body>
+</html>
+
+
+<!-- <body ng-app="myApp">
+<p>
+<p>
+<p>
+<p>
+<p>
+<div ng-controller="ChatForumController" class="container">
+
+<p>
+<p>
+<p>
+<p>
+<p>
+<form ng-submit="addMessage()" name="messageForm">
+ <input type="text" placeholder="Compose a new message..." ng-model="message" />
+   <div class="info">
+     <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+       <button ng-disabled="message.length > max || message.length === 0">send</button>
+       </div>
+      </form>
+     <hr />
+     <p ng-repeat="message in messages | orderBy: 'time':true" class="message">
+       <time>{{message.time | date: 'HH:mm'}}</time>
+         <span ng-class="{self: message.self}">{{message.message}}</span>
+         </p>
+         </div>
+         
+         
+         
+         </body>
+            -->

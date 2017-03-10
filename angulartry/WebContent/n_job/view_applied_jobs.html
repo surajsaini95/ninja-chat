@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Applied Jobs</title>
+</head>
+<body>
+
+<div class="container" ng-controller="JobController as ctrl">
+
+<div ng-repeat="Job in ctrl.jobsapplied" ng-show="Job.userID==currentUser.id">
+
+<pre>
+
+jobapplicationID:{{Job.id}}
+Userid:{{Job.userID}}<br>
+jobid:{{Job.jobID}}<br>
+DATE:{{Job.dateTime}}<br>
+remarks:{{Job.remarks}}<br>
+status:{{Job.status}}<br>
+
+</pre>
+
+<br><br>
+
+
+</div>
+
+{{ctrl.jobsapplied}}
+</div>
+
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.jobbox
+{
+height:300px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:300px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:left;
+font-size:18px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+.main
+{
+margin-left:400px;
+}
+
+</style>
+</head>
+<body>
+
+<div  ng-controller="JobController as ctrl">
+
+  <div ng-repeat="Job in ctrl.jobsapplied" ng-show="Job.userID==currentUser.id">
+							
+								 
+    <div class="jobbox">
+	     <div class="boxheader">
+			I have applied for..
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+<pre>
+JobapplicationID : {{Job.id}}<br>
+Userid           : {{Job.userID}}<br>
+Jobid            : {{Job.jobID}}<br>
+DATE             : {{Job.dateTime}}<br>
+Remarks          : {{Job.remarks}}<br>
+Status           : {{Job.status}}<br>
+
+	
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<br><br><br><br>							
+
+</div>
+</div>
+
+
+</body>
+</html>
+ 

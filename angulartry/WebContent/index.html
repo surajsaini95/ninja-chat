@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>AngularJs</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+ 
+<style>
+.bar 
+{
+height:50px;
+width:1100px;
+background-color:orange;
+margin:0 auto;
+border-radius:5px;
+}
+.content
+{
+min-height:500px;
+width:1300px;
+background-color:transparent;
+margin:0 auto;
+border-radius:15px;
+}
+.menuL
+{
+height:100%;
+background-color:orange;
+text-align: center;
+vertical-align: middle;
+line-height: 10px; 
+margin-left:10px;
+padding-left:15px;
+float:left;
+padding-right:15px;
+display:inline;
+min-width:30px;
+color:black;
+}
+div.menuL:hover
+{
+background-color:black;
+color:orange;
+}
+div.menuL:focus {
+    background-color:black;
+    color:orange;
+}
+.menuR
+{
+height:100%;
+background-color:orange;
+
+text-align: center;
+vertical-align: middle;
+line-height: 10px; 
+margin-right:10px;
+padding-left:15px;
+padding-right:15px;
+float:right;
+display:inline;
+min-width:30px;
+color:black;
+}
+div.menuR:hover
+{
+background-color:black;
+color:orange
+}
+	
+body
+{
+background-image:url("photo_bg.jpg");
+background-size:cover;
+ background-attachment: fixed;
+}
+</style>
+</head>
+<body>
+
+
+<div class="bar">
+	<a href="#/"><div class="menuL"><h2>NINJA</h2></div></a>
+	<a href="#/blog_home"><div class="menuL"><h2>Blog</h2></div></a>
+	<a href="#/chat_home"><div class="menuL"><h2>Chat</h2></div></a>
+	<a href="#/friend_home"><div class="menuL"><h2>Friend</h2></div></a>
+	<a href="#/job_home"><div class="menuL"><h2>Job</h2></div></a>
+	
+	
+<div ng-controller="UserController as ctrl">
+
+	<div ng-hide="currentUser.role=='admin' || currentUser.role=='alumni' || currentUser.role=='student' || currentUser.role=='employee'">
+		<a href="#/login"><div class="menuR"><h2>Login</h2></div></a>
+		<a href="#/register"><div class="menuR"><h2>Register</h2></div></a>
+	</div>
+	
+	<div ng-show="currentUser.role=='admin' || currentUser.role=='alumni' || currentUser.role=='student' || currentUser.role=='employee'">
+		<a ng-click="ctrl.logout()"><div class="menuR"><h2>Logout</h2></div></a>
+		<a href="#/myprofile"><div class="menuR"><h2> {{currentUser.name}} | {{currentUser.role}} </h2></div></a>	
+	</div>
+	
+	<div ng-show="currentUser.role=='admin'">
+		  <a href="#/adminhome"><div class="menuR"><h2>Admin Home </h2></div></a>
+	</div>	
+	
+</div>
+
+</div>
+<br>
+<div class="content" ng-view></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+
+<!-- <script src="resources/js/bootstrap.min.js"></script> -->
+    
+    <script src="resources/script/angular.js"></script>
+    <script src="resources/script/angular-route.min.js"></script>
+
+	<script src="resources/js/angular-cookies.js"></script>
+	<script src="resources/script/upload.js"></script>
+	<script src="resources/js/sockjs.js"></script>
+	<script src="resources/js/stomp.js"></script>
+
+
+    <script src="app.js"></script>
+    
+	<script src="n_common/HomeController.js"></script>
+	
+	<script src="n_user/UserController.js"></script>
+	<script src="n_user/UserService.js"></script>
+	
+	<script src="n_blog/BlogController.js"></script>
+	<script src="n_blog/BlogService.js"></script>
+	
+	<script src="n_job/JobController.js"></script>
+	<script src="n_job/JobService.js"></script>
+	
+	<script src="n_friend/FriendController.js"></script>
+	<script src="n_friend/FriendService.js"></script>
+	
+	<script src="n_chat/ChatController.js"></script>
+	<script src="n_chat/ChatService.js"></script>
+	
+	<script src="n_forum/ForumController.js"></script>
+	<script src="n_forum/ForumService.js"></script>
+
+	<script src="n_chat_forum/ChatForumController.js"></script>
+	<script src="n_chat_forum/ChatForumService.js"></script>
+
+<!-- 	<script src="u_upload/FileUploadController.js"></script>
+ -->
+</html>

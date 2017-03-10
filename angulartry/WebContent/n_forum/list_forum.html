@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+.button {
+    background-color:orange;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+    text-decoration:none;
+    
+}
+.button:hover
+{
+	 background-color:black;
+	color:orange;
+}
+.jobbox
+{
+height:250px;
+width:400px;
+border-radius:5px;
+margin:0 auto;
+background-color:transparent;
+
+}
+.boxheader
+{
+background-color:black;
+margin-top: 0;
+border-radius: 15px 15px 0 0;
+height:50px;
+text-align: center;	
+line-height: 50px; 
+color:orange;
+font-size:25px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.boxbody
+{
+height:100%;
+width:98%;
+border-radius:0 0 15px 15px;
+
+text-align: center; 
+
+}
+
+div#container
+{
+height:250px;
+width:400px;
+background-color:transparent;
+position:absolute;
+
+}
+div#container >div.container-first
+{
+height:100%;
+width:100%;
+background-color:black;
+opacity:.5;
+border-radius:0 0 15px 15px;
+}
+div#container >div.container-second
+{
+height:98%;
+width:98%;
+position:absolute;
+top:1%;
+left:1%;
+background-color:transparent;
+}
+
+div#container >div.container-second >div#content-container
+{
+color:white;
+text-align:justify;
+font-size:20px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+padding-left:10px;
+padding-right:10px;
+font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+word-wrap: break-word;
+}
+.main
+{
+margin-left:400px;
+}
+
+</style>
+</head>
+<body>
+<div class="container" ng-controller="ForumController as myCtrl">
+
+<!-- <div ng-repeat="blog in ctrl.blogs | filter: sear_test">-->
+
+<div ng-repeat="forum in myCtrl.forums">
+<div class="jobbox">
+	     <div class="boxheader">
+			{{forum.category}}
+		</div>
+		<div class="boxbody">
+			<div id="container">
+				<div class="container-first"></div>
+				<div class="container-second">
+					<div id="content-container">
+<pre>
+ForumId     : {{forum.id}}
+Category    : {{forum.category}}
+Title       : {{forum.title}}
+Description :
+{{forum.description}}		
+	
+	<button type="button" ng-click="myCtrl.deleteForum(forum.id)" class="button" ng-show="currentUser.role=='admin'">Remove</button>
+		
+</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<br><br><br><br>
+</div>
+<!--</div>-->
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudeflare.com/ajax/libs/angular/1.4.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudeflare.com/ajax/libs/angular/1.4.7/angular-route.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+#bd {
+	margin-top: 100px;
+}
+</style>
+</head>
+
+<body ng-app="" ng-controller="ForumController as myCtrl">
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
+	
+	<div class="container-fluid" id="fullwrapper">
+		<div class="rows">
+<div class="generic-container" ng-controller="ForumController as myCtrl">
+			<div class="col-md-7">
+				<div id="logo-container"></div>
+				<div class="col-sm-8 col-md-10 col-md-offset-1">
+					 
+						<div class="container">
+							<table class="table">
+								<thead>
+									<tr style="text-align: center;" height="40px">
+										<td>forum ID</td>
+										<td>Category</td>
+										<td>Description</td>
+										<td>Title</td>
+										<td>Delete</td>		
+									</tr>
+								</thead>
+						<tr ng-repeat="forum in myCtrl.forums" style="background-color: white; color: black; text-align: center;" height="30px">
+										<td>{{forum.id}}</td>
+										<td>{{forum.category}}</td>
+										<td>{{forum.title}} </td>
+										<td>{{forum.description}} </td>
+										
+										<td> <button type="button" ng-click="myCtrl.deleteForum(forum.id)" class="btn btn-danger custom-width">Remove</button></td>		
+									</tr>
+							</table>
+						</div>
+						
+					</div>
+			</div>
+		</div>
+	</div>
+	<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="ForumController.js"></script>
+	<script src="ForumService.js"></script>
+</body>
+</html> -->
